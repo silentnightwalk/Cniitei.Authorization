@@ -6,6 +6,11 @@ using System.Text;
 
 namespace Cniitei.Authorization.v1.Elements
 {
+    /// <summary>
+    /// Most commonly, values will be taken from request by providers
+    /// But here provider gives its defined value.
+    /// Value is not taken from request in this provider.
+    /// </summary>
     public class ClaimValueProvider : IClaimsProvider
     {
         public string Value { get; internal  set; }
@@ -56,6 +61,9 @@ namespace Cniitei.Authorization.v1.Elements
         }
     }
 
+    /// <summary>
+    /// Builder for ClaimValueProvider
+    /// </summary>
     public class ClaimValueProviderBuilder<TParentBuilder> : FluentElmBuilder<ClaimValueProvider, TParentBuilder>
         where TParentBuilder : ElmBuilderBase
     {

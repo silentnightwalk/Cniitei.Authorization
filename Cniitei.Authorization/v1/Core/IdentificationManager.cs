@@ -5,21 +5,9 @@ using System.Text;
 
 namespace Cniitei.Authorization.v1.Core
 {
-    internal class SingleIndexGenerator
-    {
-        private int m_Current = 0;
-
-        internal SingleIndexGenerator(int startIndex = 0)
-        {
-            m_Current = startIndex;
-        }
-            
-        internal int Next()
-        {
-            m_Current++;
-            return m_Current - 1;
-        }
-    }
+    /// <summary>
+    /// this class is user to define indexes (IDs) for decision tree elements.
+    /// </summary>
 
     internal class IdentificationManager: IDisposable
     {
@@ -77,6 +65,22 @@ namespace Cniitei.Authorization.v1.Core
             m_GlobalIndexGenerator = null;
             m_UniqueKeys?.Clear();
             m_UniqueKeys = null;
+        }
+    }
+
+    internal class SingleIndexGenerator
+    {
+        private int m_Current = 0;
+
+        internal SingleIndexGenerator(int startIndex = 0)
+        {
+            m_Current = startIndex;
+        }
+
+        internal int Next()
+        {
+            m_Current++;
+            return m_Current - 1;
         }
     }
 }

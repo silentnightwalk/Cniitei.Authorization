@@ -19,6 +19,7 @@ namespace Cniitei.Authorization.v1.Core
     {
         internal override IElement Element { get; set; }
         protected TElement Result { get { return Element as TElement; } }
+        public TElement GetEarlyResult() { return Result; }
 
         internal TParentBuilder Parent
         {
@@ -80,9 +81,6 @@ namespace Cniitei.Authorization.v1.Core
                         serviceKey: this.UniqueKeyIfExists
                         );
                 }
-
-                label = $"adding child to `{Parent?.ElmType}` element";
-                Parent?.Element?.AddChild(Result);
 
                 label = $"disposing `{this.GetType().Name}` builder";
                 this.Dispose();

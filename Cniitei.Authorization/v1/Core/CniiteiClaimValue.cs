@@ -6,10 +6,14 @@ using System.Text;
 
 namespace Cniitei.Authorization.v1.Core
 {
+    /// <summary>
+    /// Value of a CniiteiClaim
+    /// </summary>
     public class CniiteiClaimValue
     {
         public string Value { get; }
         public string ValueType { get; }
+        //TODO: add another property to be more specific?
 
         public CniiteiClaimValue(string value, string valueType = CniiteiValueTypes.String)
         {

@@ -41,5 +41,17 @@ namespace Cniitei.Authorization.Tests.ClaimValueProvider_tests
                 .End()
                 .Result;
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(CniiteiAuthorizationModelBuildingException))]
+        public void ClaimValueProviderBuilder_should_validate_2()
+        {
+            var testBuilder = new TestBuilder();
+
+            var testElement = testBuilder
+                .BeginClaimValueProvider()
+                .End()
+                .Result;
+        }
     }
 }

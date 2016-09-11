@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Cniitei.Authorization.v1.Core
 {
+    /// <summary>
+    /// used to create mode building exception
+    /// </summary>
     internal class ModelBuildingErrorSource
     {
         public string ElmType { get; set; }

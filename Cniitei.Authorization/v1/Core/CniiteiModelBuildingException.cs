@@ -17,15 +17,15 @@ namespace Cniitei.Authorization.v1.Core
 
         }
 
-        private static string ToMessage(IEnumerable<ModelBuildingErrorSource> trace, Exception innerException, string userMethodName = "")
+        private static string ToMessage(IEnumerable<ModelBuildingErrorSource> trace, Exception innerException, string userMethodInfo = "")
         {
             var stringBuilder = new StringBuilder();
             
             stringBuilder.AppendLine($"Cniitei authorization model building exception with the following parameters:");
             stringBuilder.AppendLine("");
-            if (!String.IsNullOrWhiteSpace(userMethodName))
+            if (!String.IsNullOrWhiteSpace(userMethodInfo))
             {
-                stringBuilder.AppendLine($" - Method info: '{userMethodName}';");
+                stringBuilder.AppendLine($" - Method info: '{userMethodInfo}';");
             }
             stringBuilder.AppendLine(" - Has the following location inside the tree of elements (from top level downwards):");
 

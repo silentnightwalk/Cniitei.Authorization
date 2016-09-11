@@ -5,6 +5,14 @@ using System.Text;
 
 namespace Cniitei.Authorization.v1
 {
+    /// <summary>
+    /// Main class of the system. 
+    /// This is a claim-based system.
+    /// This class is the Claim.
+    /// It somewhat repeats what System.Security.Claim is.
+    /// But it is defined here, so that there is no need to download extra nuget libs in .Net 4.0.
+    /// </summary>
+
     [Serializable]
     public class CniiteiClaimDto
     {

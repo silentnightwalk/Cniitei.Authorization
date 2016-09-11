@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Cniitei.Authorization.v1.Core
 {
+    /// <summary>
+    /// interface of a decision tree element
+    /// </summary>
     public interface IElement: IDisposable
     {
         void Validate();

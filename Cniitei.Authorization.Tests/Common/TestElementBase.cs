@@ -1,4 +1,5 @@
 ﻿using Cniitei.Authorization.v1;
+using Cniitei.Authorization.v1.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,11 @@ namespace Cniitei.Authorization.Tests
         public void Validate()
         {
             //all is ok
+        }
+
+        public void AddChild(IElement child)
+        {
+            throw new NotImplementedException();
         }
     }
 }

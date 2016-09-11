@@ -5,6 +5,10 @@ using System.Text;
 
 namespace Cniitei.Authorization.v1
 {
+    /// <summary>
+    /// Property of a CniiteiClaim
+    /// </summary>
+
     [Serializable]
     public class CniiteiClaimPropertyDto
     {

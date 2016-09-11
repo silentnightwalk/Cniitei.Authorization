@@ -5,6 +5,10 @@ using System.Text;
 
 namespace Cniitei.Authorization.v1.Core
 {
+    /// <summary>
+    /// definition of extension methods
+    /// </summary>
+
     public static class GenericElementsListHelper
     {
         internal static void AddIfCasts<TElm>(this IList<TElm> list, IElement element)
