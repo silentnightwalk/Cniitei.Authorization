@@ -11,6 +11,5 @@ namespace Cniitei.Authorization.v1.Elements
         string ProjectName { get; }
         bool CheckAccess(CniiteiAuthorizationRequest request);
         void ThrowIfNoAccess(CniiteiAuthorizationRequest request);
-        string GetReasonNoAccessOrNull(CniiteiAuthorizationRequest request);
     }
 }

@@ -52,13 +52,6 @@ namespace Cniitei.Authorization.v1.Elements
         {
             throw new NotImplementedException();
         }
-
-        public void Dispose()
-        {
-            Value = null;
-            ValueType = null;
-            _ClaimValue = null;
-        }
     }
 
     /// <summary>

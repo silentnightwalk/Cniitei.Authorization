@@ -82,9 +82,6 @@ namespace Cniitei.Authorization.v1.Core
                         );
                 }
 
-                label = $"disposing `{this.GetType().Name}` builder";
-                this.Dispose();
-
                 return Parent;
             }
             catch (CniiteiAuthorizationModelBuildingException customExn)
@@ -103,7 +100,7 @@ namespace Cniitei.Authorization.v1.Core
     /// <summary>
     /// Base abstract class for builder of a decision tree element
     /// </summary>
-    public abstract class ElmBuilderBase: IDisposable
+    public abstract class ElmBuilderBase
     {
         // -------- major properties --------
 
@@ -224,30 +221,5 @@ namespace Cniitei.Authorization.v1.Core
             return new CniiteiAuthorizationModelBuildingException(innerException, traceList, userMethodInfo);
         }
 
-        // -------- dispose --------
-
-        bool disposed = false;
-        SafeHandle handle = new SafeFileHandle(IntPtr.Zero, true);
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposed)
-                return;
-
-            if (disposing)
-            {
-                handle.Dispose();
-                AuthorizationLogicContainer = null;
-                IdentificationManager = null;
-            }
-
-            disposed = true;
-        }
     }
 }

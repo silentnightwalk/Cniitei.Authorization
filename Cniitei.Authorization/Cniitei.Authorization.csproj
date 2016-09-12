@@ -67,6 +67,7 @@
     <Compile Include="v1\Elements\Interfaces\ICombiningAlgorithm.cs" />
     <Compile Include="v1\Elements\Interfaces\ICompositeFactFunction.cs" />
     <Compile Include="v1\Elements\Interfaces\ICriterion.cs" />
+    <Compile Include="v1\Elements\Interfaces\IDefinitions.cs" />
     <Compile Include="v1\Elements\Interfaces\IFact.cs" />
     <Compile Include="v1\Elements\Interfaces\IObligation.cs" />
     <Compile Include="v1\Elements\Interfaces\IParameterlessFunction.cs" />

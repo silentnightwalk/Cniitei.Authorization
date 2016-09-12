@@ -8,7 +8,6 @@ namespace Cniitei.Authorization.v1.Elements
 {
     internal interface IPermissionDecider: IElement
     {
-        string UniqueName { get; }
         Decision MakeDecision(CniiteiAuthorizationRequest request);
     }
 }

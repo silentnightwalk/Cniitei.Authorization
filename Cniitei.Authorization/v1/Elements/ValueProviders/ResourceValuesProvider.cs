@@ -36,11 +36,6 @@ namespace Cniitei.Authorization.v1.Elements
             throw new NotImplementedException();
         }
 
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
-
         public void FromDto(ElmDto dto)
         {
             throw new NotImplementedException();

@@ -67,9 +67,9 @@
     <Compile Include="ActionValuesProvider_tests\ActionValuesProvider_Tests.cs" />
     <Compile Include="ActionValuesProvider_tests\Builder_for_testing_ActionValuesProvider.cs" />
     <Compile Include="ClaimValuesProvider_tests\ClaimValuesProvider_tests.cs" />
-    <Compile Include="Common\Root.cs" />
+    <Compile Include="Z_Common_classes_for_testing\Root.cs" />
     <Compile Include="ClaimValuesProvider_tests\Builder_for_testing_ClaimValuesProvider.cs" />
-    <Compile Include="Common\TestElement.cs" />
+    <Compile Include="Z_Common_classes_for_testing\TestElement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResourceValuesProvider_tests\Builder_for_testing_ResourceValuesProvider.cs" />
     <Compile Include="ResourceValuesProvider_tests\ResourceValuesProvider_tests.cs" />
@@ -83,7 +83,10 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="AndCompositeFunction_tests\" />
+    <Folder Include="TwoValuesEqualFunction_tests\" />
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

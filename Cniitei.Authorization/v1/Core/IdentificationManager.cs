@@ -10,7 +10,7 @@ namespace Cniitei.Authorization.v1.Core
     /// also check uniqueness of keys
     /// </summary>
 
-    internal class IdentificationManager: IDisposable
+    internal class IdentificationManager
     {
         private SingleIndexGenerator m_LocalIndexGenerator = new SingleIndexGenerator(1);
         private SingleIndexGenerator m_GlobalIndexGenerator;
@@ -58,14 +58,6 @@ namespace Cniitei.Authorization.v1.Core
         public IdentificationManager Another()
         {
             return new IdentificationManager(m_GlobalIndexGenerator, m_UniqueKeys);
-        }
-
-        public void Dispose()
-        {
-            m_LocalIndexGenerator = null;
-            m_GlobalIndexGenerator = null;
-            m_UniqueKeys?.Clear();
-            m_UniqueKeys = null;
         }
     }
 

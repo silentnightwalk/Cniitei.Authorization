@@ -8,7 +8,7 @@ namespace Cniitei.Authorization.v1.Core
     /// <summary>
     /// interface of a decision tree element
     /// </summary>
-    public interface IElement: IDisposable
+    public interface IElement
     {
         void Validate();
 
