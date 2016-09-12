@@ -11,7 +11,7 @@ namespace Cniitei.Authorization.v1.Elements
     /// But here provider gives its defined value.
     /// Value is not taken from request in this provider.
     /// </summary>
-    public class ClaimValueProvider : IClaimsProvider
+    public class ClaimValuesProvider : IClaimsProvider
     {
         public string Value { get; internal  set; }
         public string ValueType { get; internal set; }
@@ -34,13 +34,13 @@ namespace Cniitei.Authorization.v1.Elements
         {
             if (Value == null || ValueType == null)
             {
-                throw new Exception($"{nameof(ClaimValueProvider)} has NULL value or value type");
+                throw new Exception($"{nameof(ClaimValuesProvider)} has NULL value or value type");
             }
         }
 
         public void AddChild(IElement child)
         {
-            throw new NotSupportedException($"{nameof(ClaimValueProvider)} has no children");
+            throw new NotSupportedException($"{nameof(ClaimValuesProvider)} has no children");
         }
 
         public void FromDto(ElmDto dto)
@@ -64,16 +64,16 @@ namespace Cniitei.Authorization.v1.Elements
     /// <summary>
     /// Builder for ClaimValueProvider
     /// </summary>
-    public class ClaimValueProviderBuilder<TParentBuilder> : FluentElmBuilder<ClaimValueProvider, TParentBuilder>
+    public class ClaimValuesProviderBuilder<TParentBuilder> : FluentElmBuilder<ClaimValuesProvider, TParentBuilder>
         where TParentBuilder : ElmBuilderBase
     {
-        public ClaimValueProviderBuilder(TParentBuilder parentBuilder) 
-            : base(ElmTypes.ClaimValueProvider, parentBuilder)
+        public ClaimValuesProviderBuilder(TParentBuilder parentBuilder) 
+            : base(ElmTypes.ClaimValuesProvider, parentBuilder)
         {
 
         }
 
-        public ClaimValueProviderBuilder<TParentBuilder> SetValue(string value, string valueType = CniiteiValueTypes.String)
+        public ClaimValuesProviderBuilder<TParentBuilder> SetValue(string value, string valueType = CniiteiValueTypes.String)
         {
             Result.Value = value;
             Result.ValueType = valueType;

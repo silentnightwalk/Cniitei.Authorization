@@ -11,6 +11,12 @@ namespace Cniitei.Authorization.v1.Core
     public interface IElement: IDisposable
     {
         void Validate();
+
+        /// <summary>
+        /// AddChild, FromDto, ToDtoDeeply are for converting Model tree <- -> dto  
+        /// </summary>
+
+        //TODO: hide members
         void AddChild(IElement child);
         void FromDto(ElmDto dto);
         IEnumerable<ElmDto> ToDtoDeeply();

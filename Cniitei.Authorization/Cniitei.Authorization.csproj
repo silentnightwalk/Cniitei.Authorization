@@ -77,7 +77,9 @@
     <Compile Include="v1\AuthorizationService.cs" />
     <Compile Include="v1\Core\ElmBuilderBase.cs" />
     <Compile Include="v1\Core\CniiteiClaimValue.cs" />
-    <Compile Include="v1\Elements\ValueProviders\ClaimValueProvider.cs" />
+    <Compile Include="v1\Elements\ValueProviders\ActionValuesProvider.cs" />
+    <Compile Include="v1\Elements\ValueProviders\ClaimValuesProvider.cs" />
+    <Compile Include="v1\Elements\ValueProviders\ResourceValuesProvider.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -6,12 +6,12 @@ using Cniitei.Authorization.v1.Core;
 namespace Cniitei.Authorization.Tests.ClaimValueProvider_tests
 {
     [TestClass]
-    public class ClaimValueProvider_tests
+    public class ClaimValuesProvider_tests
     {
         [TestMethod]
-        public void ClaimValueProviderBuilder_should_build()
+        public void ClaimValuesProviderBuilder_should_build()
         {
-            var testBuilder = new TestBuilder();
+            var testBuilder = new Builder_for_testing_ClaimValuesProvider();
 
             var testElement = testBuilder
                 .BeginClaimValueProvider()
@@ -28,9 +28,9 @@ namespace Cniitei.Authorization.Tests.ClaimValueProvider_tests
 
         [TestMethod]
         [ExpectedException(typeof(CniiteiAuthorizationModelBuildingException))]
-        public void ClaimValueProviderBuilder_should_validate()
+        public void ClaimValuesProviderBuilder_should_validate()
         {
-            var testBuilder = new TestBuilder();
+            var testBuilder = new Builder_for_testing_ClaimValuesProvider();
 
             var testElement = testBuilder
                 .BeginClaimValueProvider()
@@ -44,9 +44,9 @@ namespace Cniitei.Authorization.Tests.ClaimValueProvider_tests
 
         [TestMethod]
         [ExpectedException(typeof(CniiteiAuthorizationModelBuildingException))]
-        public void ClaimValueProviderBuilder_should_validate_2()
+        public void ClaimValuesProviderBuilder_should_validate_2()
         {
-            var testBuilder = new TestBuilder();
+            var testBuilder = new Builder_for_testing_ClaimValuesProvider();
 
             var testElement = testBuilder
                 .BeginClaimValueProvider()

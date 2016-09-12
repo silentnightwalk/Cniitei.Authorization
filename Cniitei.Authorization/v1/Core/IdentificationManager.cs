@@ -6,7 +6,8 @@ using System.Text;
 namespace Cniitei.Authorization.v1.Core
 {
     /// <summary>
-    /// this class is user to define indexes (IDs) for decision tree elements.
+    /// this class is used to define indexes (IDs) for decision tree elements.
+    /// also check uniqueness of keys
     /// </summary>
 
     internal class IdentificationManager: IDisposable

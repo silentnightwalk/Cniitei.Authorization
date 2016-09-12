@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Cniitei.Authorization.v1.Core
+namespace Cniitei.Authorization.v1
 {
     /// <summary>
     /// Value of a CniiteiClaim

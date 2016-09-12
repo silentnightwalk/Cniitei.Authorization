@@ -7,6 +7,12 @@ using System.Text;
 
 namespace Cniitei.Authorization.Tests
 {
+    public class TestElement<TElement> : TestElementBase, IElement
+        where TElement : IElement
+    {
+        internal List<TElement> X { get; set; } = new List<TElement>();
+    }
+
     public class TestElementBase 
     {
 
