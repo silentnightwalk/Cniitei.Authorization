@@ -4,7 +4,7 @@ Attempt to make an access control system for .Net 4.0+. An alternative for XACML
 
 The basic idea is that the authoriZation service uses a decision tree to give the answer of either permit or deny. This tree consists of elements, which are either lower level decision makers or other functional items.
 
-It is, probably, a good idea to use fluent notation to build this desision tree (AuthirizationModel). At least for testing purposes. Later on, it is, probably, a good idea to facilitize json serialization of this tree. Finally, it would be perfect to make an online service with user-friendly editing tool for such authorization models (or decision trees - same thing).  
+It is, probably, a good idea to use fluent notation to build this desision tree (AuthirizationModel). At least for testing purposes. Later on, it is theoretically possible to facilitize json serialization of this tree. Finally, it would be perfect to make an online service with user-friendly editing tool for such authorization models (or decision trees - same thing). But it sounds like too theoretical.  
 
 Again, now it's only under development.
 
