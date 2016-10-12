@@ -4,24 +4,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using FluentAssertions;
+using Cniitei.Authorization.v1.Elements;
 
 namespace Cniitei.Authorization.Tests.ResourceValuesProvider_tests
 {
     [TestClass]
-    public class ResourceValuesProvider_tests
+    public class ResourceClaimValuesProvider_tests
     {
         [TestMethod]
         public void ActionValuesProviderBuilder_should_build()
         {
-            var testBuilder = new Builder_for_testing_ResourceValuesProvider();
+            var testBuilder = new TestBuilder<ResourceClaimValuesProvider, ResourceClaimValuesProviderBuilder<Root>>();
 
-            var testElement = testBuilder
-                .BeginResourceValuesProvider()
+            testBuilder
+                .BeginTestElement()
                     .SetClaimType("MyName")
-                .End()
-                .Result;
+                .End();
 
-            testElement.X[0].ClaimType.Should().Be("MyName");
+            testBuilder.Result.ClaimType.Should().Be("MyName");
         }
     }
 }

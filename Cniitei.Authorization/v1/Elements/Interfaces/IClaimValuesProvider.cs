@@ -6,8 +6,8 @@ using System.Text;
 
 namespace Cniitei.Authorization.v1.Elements
 {
-    internal interface IClaimsProvider: IElement
+    public interface IClaimValuesProvider: IElement
     {
-        IEnumerable<CniiteiClaimValue> GetClaims(CniiteiAuthorizationRequest request);
+        IEnumerable<CniiteiClaimValue> GetClaimValues(CniiteiAuthorizationRequest request);
     }
 }

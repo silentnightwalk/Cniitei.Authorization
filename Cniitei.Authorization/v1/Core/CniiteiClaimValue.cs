@@ -20,6 +20,9 @@ namespace Cniitei.Authorization.v1
             if (value == null)
                 throw new ArgumentNullException("value");
 
+            if (valueType == null)
+                throw new ArgumentException("valueType");
+
             Value = value;
             ValueType = valueType;
         }
@@ -49,7 +52,7 @@ namespace Cniitei.Authorization.v1
             if (ReferenceEquals(left, null) || ReferenceEquals(right, null))
                 return false;
 
-            return string.Equals(left.Value, right.Value, StringComparison.OrdinalIgnoreCase)
+            return string.Equals(left.Value, right.Value, StringComparison.Ordinal)
                 && string.Equals(left.ValueType, right.ValueType, StringComparison.OrdinalIgnoreCase);
         }
 
@@ -58,6 +61,26 @@ namespace Cniitei.Authorization.v1
             return !(left == right);
         }
 
+        /// <summary>
+        /// returns:
+        ///   null: not comparable
+        ///   0: equals
+        ///   1: grater then
+        ///   -1: less then
+        /// </summary>
+        public static int? Compare(CniiteiClaimValue left, CniiteiClaimValue right)
+        {
+            if (ReferenceEquals(left, null) && ReferenceEquals(right, null))
+                return null;
+
+            if (ReferenceEquals(left, null) || ReferenceEquals(right, null))
+                return null;
+
+            if (!string.Equals(left.ValueType, right.ValueType, StringComparison.OrdinalIgnoreCase))
+                return null;
+
+            return String.Compare(left.Value, right.Value, StringComparison.Ordinal);
+        }
     }
 
     public static class ClaimValueHelper

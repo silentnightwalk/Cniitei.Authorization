@@ -10,8 +10,11 @@ namespace Cniitei.Authorization.v1
     {
         public const string Undefined = "Undefined";
 
-        public const string ClaimValuesProvider = nameof(Elements.ClaimValuesProvider);
-        public const string ActionValuesProvider = nameof(Elements.ActionValuesProvider);
-        public const string ResourceValuesProvider = nameof(Elements.ResourceValuesProvider);
+        public const string ClaimValuesProvider = nameof(Elements.ClaimValueProvider);
+        public const string ActionClaimValuesProvider = nameof(Elements.ActionClaimValuesProvider);
+        public const string ResourceClaimValuesProvider = nameof(Elements.ResourceClaimValuesProvider);
+        public const string AllClaimValuesProvider = nameof(Elements.AllClaimValuesProvider);
+
+        public const string ClaimsEqualFact = nameof(Elements.ClaimValueCollectionsEqualFact);
     }
 }

@@ -8,17 +8,27 @@ namespace Cniitei.Authorization.v1.Core
     /// <summary>
     /// interface of a decision tree element
     /// </summary>
-    public interface IElement
+    public interface IElement:
+        IValidatableElement
+        //,ISerializableElement
+        //,IBreedingElement
     {
-        void Validate();
 
-        /// <summary>
-        /// AddChild, FromDto, ToDtoDeeply are for converting Model tree <- -> dto  
-        /// </summary>
+    }
 
-        //TODO: hide members
-        void AddChild(IElement child);
+    public interface IValidatableElement
+    {
+        void Validate();  
+    }
+
+    public interface ISerializableElement
+    {
         void FromDto(ElmDto dto);
         IEnumerable<ElmDto> ToDtoDeeply();
+    }
+
+    public interface IBreedingElement
+    {
+        void AddChild(IBreedingElement child);
     }
 }

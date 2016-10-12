@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Cniitei.Authorization.v1.Core
+namespace Cniitei.Authorization.v1
 {
     /// <summary>
     /// Authorization context here is not what it is in WIF/System.IdentityModel.
@@ -22,6 +22,11 @@ namespace Cniitei.Authorization.v1.Core
     {
         public List<CniiteiClaim> SubjectClaims { get; } = new List<CniiteiClaim>();
         public List<CniiteiClaim> EnvironmentClaims { get; } = new List<CniiteiClaim>();
+
+        public CniiteiAuthorizationContext()
+        {
+
+        }
 
         public CniiteiAuthorizationContext(CniiteiAuthorizationContextDto contextDto)
         {

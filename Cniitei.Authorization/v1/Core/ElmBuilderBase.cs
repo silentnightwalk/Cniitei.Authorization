@@ -33,29 +33,6 @@ namespace Cniitei.Authorization.v1.Core
         }
 
         /// <summary>
-        /// Base method for referencing defined elements from container
-        /// </summary>
-        protected void ReferenceDefinition(string uniqueKey, string elmType)
-        {
-            var label = $"Referencing element with `{uniqueKey}` unique key";
-            try
-            {
-                if (String.IsNullOrWhiteSpace(uniqueKey))
-                {
-                    throw new Exception($"`Unique Key` property of this `{elmType}` link must be set");
-                }
-                var referencedElement = AuthorizationLogicContainer.Resolve<TElement>(uniqueKey);
-                
-                label = $"Adding referencing element with `{uniqueKey}` unique key as a child";
-                Element?.AddChild(referencedElement);
-            }
-            catch (Exception exn)
-            {
-                throw CreateAuthorizationModelBuildingException(exn, label);
-            }
-        }
-
-        /// <summary>
         /// builds element
         /// </summary>
         /// <returns>parent builder for fluent pattern purposes</returns>
@@ -165,13 +142,18 @@ namespace Cniitei.Authorization.v1.Core
         /// </summary>
         internal IElement BuildFromDto(Container containerWithBuilders, Stack<ElmDto> dtos)
         {
+            //TODO: Possible to do serilization to and from dto
+            throw new NotImplementedException();
+
             var label = $"building from dto, popping next dto";
             try
             {
                 var dto = dtos.Pop();
 
                 label = $"popped dto is `{dto.ElmType}`, initializing element";
-                Element.FromDto(dto);
+
+                //TODO: Element.FromDto
+                //Element.FromDto(dto);
 
                 while (dtos.Peek()?.ParentId == dto.Id)
                 {
@@ -182,9 +164,11 @@ namespace Cniitei.Authorization.v1.Core
                         .Resolve<ElmBuilderBase>(elmType);
 
                     label = $"adding child to `{dto.ElmType}`";
-                    Element.AddChild(
-                        childBuilder.BuildFromDto(containerWithBuilders, dtos)
-                        );
+
+                    //TODO: Element.AddChild
+                    //Element.AddChild(
+                    //    childBuilder.BuildFromDto(containerWithBuilders, dtos)
+                    //    );
                 }
 
                 label = $"validating `{dto.ElmType}`";
