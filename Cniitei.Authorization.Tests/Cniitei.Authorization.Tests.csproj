@@ -64,7 +64,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Facts_tests\ClaimValueCollectionsEqualFactBuilder_tests.cs" />
     <Compile Include="Facts_tests\ClaimValueCollectionsEqualFact_tests.cs" />
+    <Compile Include="MyAssert.cs" />
     <Compile Include="TestData_ValueCollectionProviders.cs" />
     <Compile Include="ValueProviders_tests\ActionClaimValuesProvider_Tests.cs" />
     <Compile Include="ValueProviders_tests\AllClaimValuesProvider_Tests.cs" />

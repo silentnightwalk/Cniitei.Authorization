@@ -7,11 +7,9 @@ using DryIoc;
 
 namespace Cniitei.Authorization.v1.Elements
 {
-    public class ClaimValueCollectionsEqualFact: IFact
+    public class ClaimValueCollectionsEqualFact: TwoProvidersFact
     {
-        public List<IClaimValuesProvider> TwoClaimValuesProviders { get; internal set; }  = new List<IClaimValuesProvider>();
-
-        public bool CanSay(CniiteiAuthorizationRequest request)
+        public override bool CanSay(CniiteiAuthorizationRequest request)
         {
             //compare two collections of claims
 
@@ -35,7 +33,7 @@ namespace Cniitei.Authorization.v1.Elements
                 return false;
 
             //order groups by value type and convert to key value pairs where key is count of elements in group
-            var leftDoubleGroupped = leftGroupped.OrderBy(g => g.Key).Select(g => new KeyValuePair<int,IEnumerable<CniiteiClaimValue>>(g.Count(),g)).ToArray();
+            var leftDoubleGroupped = leftGroupped.OrderBy(g => g.Key).Select(g => new KeyValuePair<int, IEnumerable<CniiteiClaimValue>>(g.Count(), g)).ToArray();
             var rightDoubleGroupped = rightGroupped.OrderBy(g => g.Key).Select(g => new KeyValuePair<int, IEnumerable<CniiteiClaimValue>>(g.Count(), g)).ToArray();
 
             for (int k = 0; k <= leftDoubleGroupped.Length - 1; k++)
@@ -56,101 +54,5 @@ namespace Cniitei.Authorization.v1.Elements
 
             return true;
         }
-
-        public void Validate()
-        {
-            if (TwoClaimValuesProviders == null || TwoClaimValuesProviders.Count != 2)
-            {
-                throw new Exception($"{nameof(ClaimValueCollectionsEqualFact)} must have 2 claim providers");
-            } 
-        }
-    }
-
-    public class ClaimValueCollectionsEqualFactBuilder<TParentBuilder> : FluentElmBuilder<ClaimValueCollectionsEqualFact, TParentBuilder>
-        where TParentBuilder : ElmBuilderBase
-    {
-        public ClaimValueCollectionsEqualFactBuilder(TParentBuilder parentBuilder) 
-            : base(ElmTypes.ClaimsEqualFact, parentBuilder)
-        {
-
-        }
-
-        public ActionClaimValuesProviderBuilder<ClaimValueCollectionsEqualFactBuilder<TParentBuilder>> BeginActionClaimValuesProvider()
-        {
-            var childBuilder = new ActionClaimValuesProviderBuilder<ClaimValueCollectionsEqualFactBuilder<TParentBuilder>>(this);
-
-            Result.TwoClaimValuesProviders.Add(childBuilder.GetEarlyResult());
-
-            return childBuilder;
-        }
-
-        public AllClaimValuesProviderBuilder<ClaimValueCollectionsEqualFactBuilder<TParentBuilder>> BeginAllClaimValuesProvider()
-        {
-            var childBuilder = new AllClaimValuesProviderBuilder<ClaimValueCollectionsEqualFactBuilder<TParentBuilder>>(this);
-
-            Result.TwoClaimValuesProviders.Add(childBuilder.GetEarlyResult());
-
-            return childBuilder;
-        }
-
-        public ResourceClaimValuesProviderBuilder<ClaimValueCollectionsEqualFactBuilder<TParentBuilder>> BeginResourceClaimValuesProvider()
-        {
-            var childBuilder = new ResourceClaimValuesProviderBuilder<ClaimValueCollectionsEqualFactBuilder<TParentBuilder>>(this);
-
-            Result.TwoClaimValuesProviders.Add(childBuilder.GetEarlyResult());
-
-            return childBuilder;
-        }
-
-        public ClaimValueProviderBuilder<ClaimValueCollectionsEqualFactBuilder<TParentBuilder>> BeginClaimValuesProvider()
-        {
-            var childBuilder = new ClaimValueProviderBuilder<ClaimValueCollectionsEqualFactBuilder<TParentBuilder>>(this);
-
-            Result.TwoClaimValuesProviders.Add(childBuilder.GetEarlyResult());
-
-            return childBuilder;
-        }
-
-        public ClaimValueCollectionsEqualFactBuilder<TParentBuilder> SetCustomClaimValuesProvider(
-            string uniqueKey,
-            IClaimValuesProvider claimValuesProvider
-            )
-        {
-            try
-            {
-                AuthorizationLogicContainer.UseInstance<IClaimValuesProvider>(
-                    claimValuesProvider,
-                    serviceKey: $"{nameof(IClaimValuesProvider)}_{uniqueKey}"
-                    );
-
-                Result.TwoClaimValuesProviders.Add(claimValuesProvider);
-            }
-            catch (Exception exn)
-            {
-                throw CreateAuthorizationModelBuildingException(exn, $"registering in container {nameof(IClaimValuesProvider)} with key {uniqueKey}");
-            }
-
-            return this;
-        }
-
-        public ClaimValueCollectionsEqualFactBuilder<TParentBuilder> UseExistingCustomClaimValuesProvider(
-            string uniqueKey
-            )
-        {
-            try
-            {
-                var resolvedProvider = AuthorizationLogicContainer.Resolve<IClaimValuesProvider>(
-                    serviceKey: $"{nameof(IClaimValuesProvider)}_{uniqueKey}"
-                    );
-
-                Result.TwoClaimValuesProviders.Add(resolvedProvider);
-            }
-            catch (Exception exn)
-            {
-                throw CreateAuthorizationModelBuildingException(exn, $"resolving from container {nameof(IClaimValuesProvider)} with key {uniqueKey}");
-            }
-
-            return this;
-        }
-    }
+    } 
 }

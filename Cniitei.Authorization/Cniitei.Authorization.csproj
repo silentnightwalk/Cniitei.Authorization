@@ -62,6 +62,7 @@
     <Compile Include="v1\Core\ElmTypes.cs" />
     <Compile Include="v1\Core\IdentificationManager.cs" />
     <Compile Include="v1\Elements\Facts\ClaimValueCollectionsEqualFact.cs" />
+    <Compile Include="v1\Elements\Facts\TwoProvidersFact_abstract.cs" />
     <Compile Include="v1\Elements\Interfaces\IAuthorizationModel.cs" />
     <None Include="v1\Elements\Interfaces\IClaimBasedFactFunction._cs" />
     <Compile Include="v1\Elements\Interfaces\IClaimValuesProvider.cs" />
