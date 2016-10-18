@@ -10,15 +10,16 @@ using System.Text;
 namespace Cniitei.Authorization.Tests.Facts_tests
 {
     [TestClass]
-    public class TwoProvidersFactBuilder_tests
+    public class TwoProvidersFactsBuilders_tests
     {
         [TestMethod]
-        public void TestAllFactsWithTwoProviders()
+        public void Test_All_Fact_Builders_Of_Facts_With_Two_Providers()
         {
-            Test<ClaimValueCollectionsEqualFact>();
+            TestBuilder<ClaimValueCollectionsEqualFact>();
+            TestBuilder<FirstOrDefaultClaimValuesEqualFact>();
         }
 
-        private void Test<TTwoProvidersFact>()
+        private void TestBuilder<TTwoProvidersFact>()
             where TTwoProvidersFact : TwoProvidersFact, new()
         {
             TwoProvidersFactBuilder_should_throw_when_no_providers<TTwoProvidersFact>();
@@ -31,10 +32,10 @@ namespace Cniitei.Authorization.Tests.Facts_tests
         private void TwoProvidersFactBuilder_should_throw_when_no_providers<TTwoProvidersFact>()
             where TTwoProvidersFact : TwoProvidersFact, new()
         {
-            var testBuilder = new TestBuilder<TTwoProvidersFact, TwoProvidersFactBuilder<TTwoProvidersFact, Root>>();
+            var builder = new TestBuilder<TTwoProvidersFact, TwoProvidersFactBuilder<TTwoProvidersFact, Root>>();
 
             MyAssert.Throws<CniiteiAuthorizationModelBuildingException>(
-                () => testBuilder
+                () => builder
                     .BeginTestElement()
                     .End()
                 );
@@ -44,10 +45,10 @@ namespace Cniitei.Authorization.Tests.Facts_tests
         private void TwoProvidersFactBuilder_should_throw_when_one_provider<TTwoProvidersFact>()
             where TTwoProvidersFact : TwoProvidersFact, new()
         {
-            var testBuilder = new TestBuilder<TTwoProvidersFact, TwoProvidersFactBuilder<TTwoProvidersFact, Root>>();
+            var builder = new TestBuilder<TTwoProvidersFact, TwoProvidersFactBuilder<TTwoProvidersFact, Root>>();
 
             MyAssert.Throws<CniiteiAuthorizationModelBuildingException>(
-                () => testBuilder
+                () => builder
                     .BeginTestElement()
                         .BeginActionClaimValuesProvider()
                             .SetClaimType("MyClaimType")
@@ -60,10 +61,10 @@ namespace Cniitei.Authorization.Tests.Facts_tests
         private void TwoProvidersFactBuilder_should_throw_when_three_providers<TTwoProvidersFact>()
             where TTwoProvidersFact : TwoProvidersFact, new()
         {
-            var testBuilder = new TestBuilder<TTwoProvidersFact, TwoProvidersFactBuilder<TTwoProvidersFact, Root>>();
+            var builder = new TestBuilder<TTwoProvidersFact, TwoProvidersFactBuilder<TTwoProvidersFact, Root>>();
 
             MyAssert.Throws<CniiteiAuthorizationModelBuildingException>(
-                () => testBuilder
+                () => builder
                     .BeginTestElement()
                         .BeginActionClaimValuesProvider()
                             .SetClaimType("MyClaimType")
@@ -82,9 +83,9 @@ namespace Cniitei.Authorization.Tests.Facts_tests
         private void TwoProvidersFactBuilder_should_build_when_two_providers<TTwoProvidersFact>()
             where TTwoProvidersFact : TwoProvidersFact, new()
         {
-            var testBuilder = new TestBuilder<TTwoProvidersFact, TwoProvidersFactBuilder<TTwoProvidersFact, Root>>();
+            var builder = new TestBuilder<TTwoProvidersFact, TwoProvidersFactBuilder<TTwoProvidersFact, Root>>();
 
-            testBuilder
+            builder
                 .BeginTestElement()
                     .BeginActionClaimValuesProvider()
                         .SetClaimType("Org")
@@ -94,7 +95,7 @@ namespace Cniitei.Authorization.Tests.Facts_tests
                     .End()
                 .End();
 
-            testBuilder.Result.TwoClaimValuesProviders.Count.Should().Be(2);
+            builder.Result.TwoClaimValuesProviders.Count.Should().Be(2);
         }
         
     }
