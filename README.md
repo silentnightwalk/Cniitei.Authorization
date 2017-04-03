@@ -1,12 +1,6 @@
 # Cniitei.Authorization
 
-Attempt to make an access control system for .Net 4.0+. An alternative for XACML-based access control systems for .Net, but simpler. Much is taken from XACML concept. At the moment this project is under development, probably, just a prototype.
-
-The basic idea is that the authoriZation service uses a decision tree to give the answer of either permit or deny. This tree consists of elements, which are either lower level decision makers or other functional items.
-
-It is, probably, a good idea to use fluent notation to build this desision tree (AuthirizationModel). At least for testing purposes. Later on, it is theoretically possible to facilitize json serialization of this tree. Finally, it would be perfect to make an online service with user-friendly editing tool for such authorization models (or decision trees - same thing). But it sounds like too theoretical.  
-
-Again, now it's only under development.
+Attempt to make an analogue of XACML for C# turned out to be unsuccessfull. I gave it a try, but it would be too difficult and senseless to finish.
 
 See [XACML](http://wso2.com/library/articles/2011/10/understanding-xacml-policy-language-xacml-extended-assertion-markup-langue-part-1/) for more information.
 
@@ -17,7 +11,7 @@ See [XACML](http://wso2.com/library/articles/2011/10/understanding-xacml-policy-
 
 ```javascript
     
-    //Comming soon.
+    //Comming never (not soon).
     
 ```
 
@@ -124,22 +118,6 @@ See [XACML](http://wso2.com/library/articles/2011/10/understanding-xacml-policy-
     public interface IObligation: IElement
     {
         void Fulfill(CniiteiAuthorizationRequest request, string policyId, DecisionValue policyDecision);
-    }
-    
-```
-```cs
-    
-    internal interface ICompositeFactFunction: IElement
-    {
-        bool CanSay(CniiteiAuthorizationRequest request, params IFact[] parameters);
-    }
-    
-```
-```cs
-    
-    internal interface IClaimBasedFactFunction: IElement
-    {
-        bool CanSay(CniiteiAuthorizationRequest request, params IClaimsProvider[] parameters);
     }
     
 ```
